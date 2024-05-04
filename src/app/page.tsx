@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import { Button } from "~/components/ui/button";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -55,6 +56,8 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+
+        <Button>This is a button</Button>
 
         <CrudShowcase />
       </div>
