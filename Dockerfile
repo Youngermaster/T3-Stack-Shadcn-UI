@@ -1,6 +1,10 @@
 ##### DEPENDENCIES
 
-FROM --platform=linux/amd64 node:20-alpine AS deps
+# ! Select linux/arm64 or linux/amd64 based on your platform
+# ! in my case I have a M3 Macbook Pro with Apple M3 chip so I use linux/arm64
+# ! but if you are not using any ARM Macbook then use linux/amd64
+# FROM --platform=linux/amd64 node:20-alpine AS deps
+FROM --platform=linux/arm64 node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
@@ -20,7 +24,11 @@ RUN \
 
 ##### BUILDER
 
-FROM --platform=linux/amd64 node:20-alpine AS builder
+# ! Select linux/arm64 or linux/amd64 based on your platform
+# ! in my case I have a M3 Macbook Pro with Apple M3 chip so I use linux/arm64
+# ! but if you are not using any ARM Macbook then use linux/amd64
+# FROM --platform=linux/amd64 node:20-alpine AS builder
+FROM --platform=linux/arm64 node:20-alpine AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
@@ -38,7 +46,11 @@ RUN \
 
 ##### RUNNER
 
-FROM --platform=linux/amd64 gcr.io/distroless/nodejs20-debian12 AS runner
+# ! Select linux/arm64 or linux/amd64 based on your platform
+# ! in my case I have a M3 Macbook Pro with Apple M3 chip so I use linux/arm64
+# ! but if you are not using any ARM Macbook then use linux/amd64
+# FROM --platform=linux/amd64 gcr.io/distroless/nodejs20-debian12 AS runner
+FROM --platform=linux/arm64 gcr.io/distroless/nodejs20-debian12 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
