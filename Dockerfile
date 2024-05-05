@@ -5,8 +5,7 @@ RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # Install Prisma Client - remove if not using Prisma
-
-COPY prisma ./
+#COPY prisma ./
 
 # Install dependencies based on the preferred package manager
 
