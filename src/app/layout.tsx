@@ -1,12 +1,10 @@
 import "~/styles/globals.css";
-
 import { Inter } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 import Providers from "~/components/layout/providers";
 import { Toaster } from "~/components/ui/toaster";
 import "@uploadthing/react/styles.css";
-import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
+import { getServerAuthSession } from "~/server/auth";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +22,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession();
+  const session = await getServerAuthSession();
+
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
