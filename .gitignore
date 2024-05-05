@@ -45,3 +45,6 @@ yarn-error.log*
 # SonarQube
 .sonar/
 .scannerwork/
+
+# Ansible
+hosts.ini
