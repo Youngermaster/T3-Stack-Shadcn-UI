@@ -82,7 +82,7 @@
 
     - name: Clone GitHub Repository
       ansible.builtin.git:
-        repo: "https://github.com/Youngermaster/Reto-3-S2461.git"
+        repo: "https://github.com/Youngermaster/T3-Stack-Shadcn-UI.git"
         dest: "/home/ubuntu/Reto-3-S2461"
         clone: yes
         update: yes
