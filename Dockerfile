@@ -63,8 +63,10 @@ COPY --from=builder /app/package.json ./package.json
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next/static ./.next/standalone/static
+COPY --from=builder /app/.next/types ./.next/standalone/types
 
 EXPOSE 3000
 ENV PORT 3000
 
-CMD ["server.js"]
+CMD ["./.next/standalone/server.js"]
